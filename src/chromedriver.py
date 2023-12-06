@@ -12,6 +12,8 @@ class Chromedriver:
     driver_path: str = ''
     binary_path: str = ''
     user_agent: str = ''
+    # установить в True для headless режима
+    headless: bool = False
 
     def __init__(self, driver_path: str = '', binary_path: str = '', user_agent: str = '') -> None:
         self.driver_path = driver_path
@@ -42,6 +44,9 @@ class Chromedriver:
     def __get_options__(self) -> 'Options':
         options = Options()
         options.binary_location = self.binary_path
+
+        if self.headless == True:
+            options.add_argument("--headless=new")
 
         user_agent = self.user_agent
         if user_agent == '':

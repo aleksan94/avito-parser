@@ -11,6 +11,8 @@ chrome_driver_path = os.getenv('CHROME_DRIVER_PATH')
 chrome_binary_path = os.getenv('CHROME_BINARY_PATH')
 
 driver = Chromedriver(chrome_driver_path, chrome_binary_path)
+print("Включить headless режим (y|n)?")
+driver.headless = str(input()).lower() == 'y'
 
 urlList = {
        "protsessory": "https://www.avito.ru/moskva/tovary_dlya_kompyutera/komplektuyuschie/protsessory-ASgBAgICAkTGB~pm7gniZw?cd=1&f=ASgBAgECAkTGB~pm7gniZwFFxpoMFXsiZnJvbSI6MCwidG8iOjEwMDAwfQ",
