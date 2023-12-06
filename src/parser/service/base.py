@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
 from selenium.webdriver import Chrome
-from chromedriver import Chromedriver
 from parser.product import Product
 from writter.abstract import AbstractWritter
 from functional import seq
@@ -10,8 +9,8 @@ class BaseParser(ABC):
     driver: Chrome
     __products__: List[Product]
 
-    def __init__(self, driver: Chromedriver) -> None:
-        self.driver = driver.driver()
+    def __init__(self, driver: Chrome) -> None:
+        self.driver = driver
 
     @abstractmethod
     def _parse_handler_(self) -> List[Product]:
