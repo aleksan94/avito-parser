@@ -22,5 +22,5 @@ sh lib.sh
 Команда запуска проекта:
 
 ```shell
-py main.py
+py src/main.py
 ```
