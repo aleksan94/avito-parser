@@ -54,7 +54,6 @@ class Chromedriver:
 
         if self.headless == True:
             options.add_argument("--headless=new")
-            options.add_argument("--disable-gpu")
             options.add_argument("--disable-extensions")
             options.add_argument("--no-sandbox")
 
