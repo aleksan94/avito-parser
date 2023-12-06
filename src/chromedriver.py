@@ -50,7 +50,8 @@ class Chromedriver:
 
         user_agent = self.user_agent
         if user_agent == '':
-            user_agent = UserAgent().random
+            ua = UserAgent()
+            user_agent = ua.random
         options.add_argument(f'--user-agent={user_agent}')
 
         return options
