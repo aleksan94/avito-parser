@@ -10,9 +10,13 @@ load_dotenv()
 chrome_driver_path = os.getenv('CHROME_DRIVER_PATH')
 chrome_binary_path = os.getenv('CHROME_BINARY_PATH')
 
-driver = Chromedriver(chrome_driver_path, chrome_binary_path)
+chromedriver = Chromedriver(chrome_driver_path, chrome_binary_path)
+
 print("Включить headless режим (y|n)?")
-driver.headless = str(input()).lower() == 'y'
+headlessMode = str(input()).lower() == 'y'
+
+chromedriver.headless = headlessMode
+driver = chromedriver.driver()
 
 urlList = {
        "protsessory": "https://www.avito.ru/moskva/tovary_dlya_kompyutera/komplektuyuschie/protsessory-ASgBAgICAkTGB~pm7gniZw?cd=1&f=ASgBAgECAkTGB~pm7gniZwFFxpoMFXsiZnJvbSI6MCwidG8iOjEwMDAwfQ",
@@ -29,3 +33,6 @@ avitoParser = AvitoParser(driver=driver)
 avitoParser.urlList = [urlList['korpusy']]
 writter = CsvWritter('./storage/products.csv')
 avitoParser.parse().write(writter)
+
+if headlessMode == True:
+    driver.close()
